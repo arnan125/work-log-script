@@ -9,7 +9,8 @@
     "start": "forever start src/index.js",
     "show": "forever list",
     "stop": "forever stop src/index.js",
-    "test": "node src/test.js"
+    "test": "node src/test.js",
+    "config":"node src/configGen.js"
   },
   "author": "arnan",
   "license": "ISC",

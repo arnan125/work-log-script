@@ -12,8 +12,8 @@
 * 手动创建日志：在文件根目录下运行 `npm run create`
 
 ### 配置
-* 见`src/config.js`文件
-* 其中 `mailOptions`,`transporterOptions` 必须配置
+* 在文件根目录下运行 `npm run config`， 创建配置文件 `src/config.js`
+* 修改配置文件，其中 `mailOptions`,`transporterOptions` 必须配置
 
 ### TIPS
 * 将`start.bat/start.sh`文件加入开机启动任务中，可开机自动运行该脚本
