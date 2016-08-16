@@ -18,3 +18,4 @@
 ### TIPS
 * 将`start.bat/start.sh`文件加入开机启动任务中，可开机自动运行该脚本
 * [CRON](https://zh.wikipedia.org/wiki/Cron)时间格式
+* 运行`npm run show`检查是否运行了多个相同任务，并用`forever stop [pid]`结束冗余进程
