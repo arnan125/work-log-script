@@ -12,12 +12,19 @@ var create = function () {
     var fileInfo = util.generateFile()
     var filepath = path.resolve(logDir, './' + fileInfo.filename) 
     var content = fileInfo.content
+    
+    try {
+        fs.accessSync(logDir)
+    } catch(e) {
+        fs.mkdirSync(logDir, 664)
+        var info = `creating folder ${logDir}`
+        log(info, 'I')
+    }
 
     try {
         var fd = fs.openSync(filepath, 'ax', 664)
         fs.writeSync(fd, content, undefined, 'utf-8')
         fs.closeSync(fd)
-
         var info = `creating log ${filepath}`
         log(info, 'I')    
     } catch (error) {
