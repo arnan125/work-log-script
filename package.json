@@ -1,0 +1,22 @@
+{
+  "name": "work-log-script",
+  "version": "1.0.0",
+  "description": "it is a project aiming at creating working logs and sending them to a specific email account (usually my boss's) automaticlly at a random time on every firday",
+  "main": "./src/index.js",
+  "scripts": {
+    "create": "node src/create.js -r",
+    "send": "node src/send.js -r",
+    "start": "forever start src/index.js",
+    "show": "forever list",
+    "stop": "forever stop src/index.js",
+    "test": "node src/test.js"
+  },
+  "author": "arnan",
+  "license": "ISC",
+  "dependencies": {
+    "forever": "^0.15.2",
+    "markdown": "^0.5.0",
+    "node-schedule": "^1.1.1",
+    "nodemailer": "^2.5.0"
+  }
+}
