@@ -22,8 +22,8 @@ module.exports = {
         verifyReg: ''   // verify mail content using a reg expression, default `/^([\s\S]*?)周一([\s\S]*?)周二([\s\S]*?)周三([\s\S]*?)周四([\s\S]*?)周五([\s\S]*?)$/` 
     },
     scheduleOptions: {
-        logCreate: '',  // 'cron' string, default '0 8 ? * 1' in Firday morning
-        logSend: '',    // 'cron' string, default '30 20 ? * 5' 20:30 on Friday
+        logCreate: '',  // 'cron' string, default '0 8 * * 1' in Firday morning
+        logSend: '',    // 'cron' string, default '30 20 * * 5' 20:30 on Friday
         // randomDelyRange: 30 * 60, // s,  default half an hour 
     }
 }

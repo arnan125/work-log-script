@@ -4,6 +4,7 @@ var schedule = require('node-schedule')   // https://github.com/node-schedule/no
 var config = require('./config.js')
 var create = require("./create.js")
 var send = require("./send.js")
+var log = require("./log.js")
 
 // config
 config.scheduleOptions = config.scheduleOptions || {}
@@ -15,9 +16,7 @@ var logSendSchedule = schedule.scheduleJob(config.scheduleOptions.logSend || '30
     setTimeout(send, randomRange * 1000)
 })
 // create log in Firday morning
-var logCreateSchedule = schedule.scheduleJob(config.scheduleOptions.logCreate || '0 8 * * 1', function () {
-    creat()
-})
+var logCreateSchedule = schedule.scheduleJob(config.scheduleOptions.logCreate || '0 8 * * 1', create)
 
 // when exiting this process, some operations to do here
 process.on('exit', function () {
