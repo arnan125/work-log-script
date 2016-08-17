@@ -37,7 +37,7 @@ var str =
 }`
 
 try {
-    var fd = fs.openSync(filepath, 'ax', 664)
+    var fd = fs.openSync(filepath, 'ax', 0o777)
     fs.writeSync(fd, str, undefined, 'utf-8')
     fs.closeSync(fd)
     var info = `creating config ${filepath}`
