@@ -6,9 +6,9 @@
   "scripts": {
     "create": "node src/create.js -r",
     "send": "node src/send.js -r",
-    "start": "forever start src/index.js",
+    "start": "forever start --uid \"work-log\" -a src/index.js",
     "show": "forever list",
-    "stop": "forever stop src/index.js",
+    "stop": "forever stop work-log",
     "test": "node src/test.js",
     "config":"node src/configGen.js"
   },
