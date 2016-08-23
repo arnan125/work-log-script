@@ -1,3 +1,2 @@
-%~d0
-cd %~dp0
+cd /d %~dp0
 npm run start
