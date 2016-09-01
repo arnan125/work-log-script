@@ -16,13 +16,13 @@ var create = function () {
     try {
         fs.accessSync(logDir)
     } catch(e) {
-        fs.mkdirSync(logDir, 0o666)
+        fs.mkdirSync(logDir, 0o777)
         var info = `creating folder ${logDir}`
         log(info, 'I')
     }
 
     try {
-        var fd = fs.openSync(filepath, 'ax', 0o666)
+        var fd = fs.openSync(filepath, 'ax', 0o777)
         fs.writeSync(fd, content, undefined, 'utf-8')
         fs.closeSync(fd)
         var info = `creating log ${filepath}`

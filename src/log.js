@@ -9,7 +9,7 @@ var log = function (str, type) {
     
     var filePath = path.resolve(root, './log.md')
     
-    var fd = fs.openSync(filePath, 'a', 0o666)
+    var fd = fs.openSync(filePath, 'a', 0o777)
     fs.writeSync(fd, str, undefined, "utf8")
     fs.closeSync(fd)
     console.log(str)
