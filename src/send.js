@@ -22,7 +22,12 @@ var send = function () {
     var content = fs.readFileSync(filepath, 'utf8')
 
     // verify
-    var verifyReg = config.contentOptions.verifyReg || /^([\s\S]*?)周一([\s\S]*?)周二([\s\S]*?)周三([\s\S]*?)周四([\s\S]*?)周五([\s\S]*?)$/ 
+    var verifyReg = (function(){
+        var reg = config.contentOptions.verifyReg
+        if(typeof reg === 'object') return reg
+        var regStr = reg || '^([\\s\\S]*?)周一([\\s\\S]*?)周二([\\s\\S]*?)周三([\\s\\S]*?)周四([\\s\\S]*?)周五([\\s\\S]*?)$'
+        reg = new RegExp(regStr)
+    })()
     var verify = verifyReg.test(content)
     var msg = `${filepath} verified success,wait to send...`
     if (!verify) {
@@ -77,7 +82,6 @@ var send = function () {
 var run = process.argv.indexOf('-r') > -1
 
 if (run) {
-    console.log('runrunrunrunrunrun')
     send()
 } else {
     module.exports = send
