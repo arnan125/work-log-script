@@ -11,15 +11,25 @@ var config = require('./config.js')
 var root = path.resolve(__dirname, '../')
 var logDir = path.resolve(root, 'logs/')
 
+var run = process.argv.indexOf('-r') > -1
+var date = process.argv.indexOf('-d') > -1 && process.argv[process.argv.indexOf('-d')+1] || undefined
+
 // config
 config.contentOptions = config.contentOptions || {} 
 config.transporterOptions = config.transporterOptions || {}
 config.mailOptions = config.mailOptions || {}
 
 var send = function () {
-    var filename = util.generateFile().filename
+    var filename = util.generateFile(date).filename
     var filepath = path.resolve(logDir, './' + filename)
-    var content = fs.readFileSync(filepath, 'utf8')
+    var content
+    try {
+        content = fs.readFileSync(filepath, 'utf8')    
+    } catch (error) {
+        console.log(error)
+        log(error.msg || error,'E')
+        return 
+    }
 
     // verify
     var verifyReg = (function(){
@@ -30,6 +40,11 @@ var send = function () {
     })()
     var verify = verifyReg.test(content)
     var msg = `${filepath} verified success,wait to send...`
+    if (run) {
+        msg = `${filepath} skip verifing, wait to send...`
+        log(msg, 'I')
+        return
+    }
     if (!verify) {
         msg = `${filepath} verified fail, abort sending...`
         log(msg, 'W')
@@ -79,7 +94,7 @@ var send = function () {
     });
 }
 
-var run = process.argv.indexOf('-r') > -1
+
 
 if (run) {
     send()
