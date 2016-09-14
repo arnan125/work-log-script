@@ -26,7 +26,6 @@ var send = function () {
     try {
         content = fs.readFileSync(filepath, 'utf8')    
     } catch (error) {
-        console.log(error)
         log(error.msg || error,'E')
         return 
     }
@@ -42,10 +41,7 @@ var send = function () {
     var msg = `${filepath} verified success,wait to send...`
     if (run) {
         msg = `${filepath} skip verifing, wait to send...`
-        log(msg, 'I')
-        return
-    }
-    if (!verify) {
+    }else if (!verify) {
         msg = `${filepath} verified fail, abort sending...`
         log(msg, 'W')
         return
