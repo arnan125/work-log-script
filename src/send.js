@@ -36,6 +36,7 @@ var send = function () {
         if(typeof reg === 'object') return reg
         var regStr = reg || '^([\\s\\S]*?)周一([\\s\\S]*?)周二([\\s\\S]*?)周三([\\s\\S]*?)周四([\\s\\S]*?)周五([\\s\\S]*?)$'
         reg = new RegExp(regStr)
+        return reg
     })()
     var verify = verifyReg.test(content)
     var msg = `${filepath} verified success,wait to send...`
