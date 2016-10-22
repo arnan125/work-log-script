@@ -76,7 +76,7 @@ log('log test with log type', 'I')
 
 // check if there is a mail send to the mail specified in the config file
 // watch out：you must make sure your work log can pass the verifying at first   
-send()
+0 && send()
 
 ///////////////////////////////////////////////
 ////////       create test        ///////////////
