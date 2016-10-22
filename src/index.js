@@ -11,8 +11,8 @@ config.scheduleOptions = config.scheduleOptions || {}
 
 // tasks schedules  
 //send log at about  20:30 on Friday  
-var randomRange = Math.random() * (typeof config.scheduleOptions.randomDelyRange !== 'undefined' ? config.scheduleOptions.randomDelyRange : 30 * 60) | 0  // ms
 var logSendSchedule = schedule.scheduleJob(config.scheduleOptions.logSend || '30 20 * * 5', function () {
+    var randomRange = Math.random() * (typeof config.scheduleOptions.randomDelyRange !== 'undefined' ? config.scheduleOptions.randomDelyRange : 30 * 60) | 0  // ms
     setTimeout(send, randomRange * 1000)
 })
 // create log in Firday morning
