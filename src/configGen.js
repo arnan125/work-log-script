@@ -9,8 +9,8 @@ var str =
 `module.exports = {
     // required
     mailOptions: {
-        from: '"魏明圆" <mingyuan.wei@ymm56.com>',  // set as this format
-        to: 'mingyuan.wei@ymm56.com',
+        from: '"难" <me@mailsever.com>',  // seted like this format
+        to: 'other@mailsever.com',
         subject: '',   // default 周报 mm月dd日 -- mm月dd日 
     },
     // required
